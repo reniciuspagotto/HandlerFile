@@ -35,6 +35,7 @@ namespace HandlerFile
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseHttpsRedirection();
             app.UseMvc();
         }
     }
