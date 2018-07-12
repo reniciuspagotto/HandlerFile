@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace HandlerFile.Controllers
 {
     [Route("api/file")]
+    [ApiController]
     public class FileController : ControllerBase
     {
         [HttpGet]
@@ -17,6 +20,13 @@ namespace HandlerFile.Controllers
             };
 
             return result;
+        }
+
+        [HttpPost]
+        public IActionResult Upload([FromForm]ObjectDto dto)
+        {
+            var file = dto.File;
+            return Ok("Arquivo recebido");
         }
     }
 }
