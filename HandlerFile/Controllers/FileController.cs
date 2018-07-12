@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
 
@@ -23,11 +24,25 @@ namespace HandlerFile.Controllers
         }
 
         [HttpPost]
+        [Route("Action1")]
         public IActionResult Upload([FromForm]ObjectDto dto)
         {
             using (var stream = new MemoryStream())
             {
-                dto.File.CopyToAsync(stream);
+                dto.Files.CopyToAsync(stream);
+                var base64String = Convert.ToBase64String(stream.ToArray());
+            }
+
+            return Ok("Arquivo recebido");
+        }
+
+        [HttpPost]
+        [Route("Action2")]
+        public IActionResult Upload2(IFormFile file, [FromForm]ObjectDto dto)
+        {
+            using (var stream = new MemoryStream())
+            {
+                file.CopyToAsync(stream);
                 var base64String = Convert.ToBase64String(stream.ToArray());
             }
 
