@@ -4,7 +4,7 @@
     "anonymousAuthentication": true,
     "iisExpress": {
       "applicationUrl": "http://localhost:55142",
-      "sslPort": 44341
+      "sslPort": 44309
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
@@ -20,7 +20,8 @@
     "HandlerFile": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/status",
+      "launchUrl": "api/file",
+      "applicationUrl": "http://localhost:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
